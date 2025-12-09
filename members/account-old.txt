@@ -1,0 +1,2146 @@
+
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+.navbar {
+    background: linear-gradient(135deg, #5a67d8 0%, #667eea 50%, #764ba2 100%) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.logo-text-nav { font-weight: 600; font-size: 18px; }
+.logo-text-nav .it { color: #cbd5e0; }
+.navbar-brand img { filter: brightness(0) invert(1); }
+.dropdown-menu {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    margin-top: 8px;
+}
+.dropdown-item { padding: 10px 20px; transition: all 0.2s; }
+.dropdown-item:hover { background: #f8f9fa; color: #5a67d8; }
+body { padding-top: 56px; }
+
+/* User dropdown styling */
+.user-dropdown-btn {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    color: white !important;
+    transition: all 0.2s ease !important;
+    backdrop-filter: blur(10px) !important;
+    padding: 6px 16px !important;
+    border-radius: 20px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.user-dropdown-btn:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.user-avatar {
+    width: 20px;
+    height: 20px;
+    background: #10b981;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 9px;
+}
+
+/* Notification Badge */
+.nav-notification-badge {
+    position: absolute !important;
+    top: 6px !important;
+    right: 2px !important;
+    background: #ef4444 !important;
+    color: white !important;
+    border-radius: 50% !important;
+    width: 18px !important;
+    height: 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    z-index: 10 !important;
+    border: 1px solid #5a67d8 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Mobile navbar fixes - EXACTLY like nav.php */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: linear-gradient(135deg, #5a67d8 0%, #667eea 50%, #764ba2 100%) !important;
+        border-radius: 8px !important;
+        margin-top: 8px !important;
+        padding: 15px !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    /* Ensure navbar toggler is visible */
+    .navbar-toggler {
+        border: 1px solid rgba(255, 255, 255, 0.5) !important;
+        padding: 4px 8px !important;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25) !important;
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+
+    /* Ensure all nav links stay white on mobile */
+    .navbar-nav .nav-link {
+        color: white !important;
+        padding: 8px 0 !important;
+    }
+    
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link:focus {
+        color: #cbd5e0 !important;
+    }
+    
+    .dropdown-toggle::after {
+        border-top-color: white !important;
+    }
+    
+    .user-dropdown-btn {
+        justify-content: flex-start !important;
+        width: 100% !important;
+        margin-top: 10px !important;
+    }
+    
+    .navbar-nav .nav-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+    }
+    
+    .navbar-nav .nav-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+}
+
+/* Admin sidebar styles */
+.admin-sidebar {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 280px;
+    height: calc(100vh - 56px);
+    background: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    z-index: 1000;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+}
+
+.admin-sidebar.collapsed {
+    transform: translateX(-100%);
+}
+
+.sidebar-header {
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-nav {
+    padding: 1rem 0;
+}
+
+.sidebar-nav .nav-link {
+    padding: 0.75rem 1.5rem;
+    color: #495057;
+    border-radius: 0;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.sidebar-nav .nav-link:hover,
+.sidebar-nav .nav-link.active {
+    background: #e9ecef;
+    color: #667eea;
+    text-decoration: none;
+}
+
+.sidebar-toggle {
+    position: fixed;
+    top: 66px;
+    left: 10px;
+    z-index: 1001;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: none;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Tickets Section Styles */
+.tickets-header {
+    cursor: pointer;
+    background: #e9ecef !important;
+    color: #495057 !important;
+    font-weight: 600;
+}
+
+.tickets-header:hover {
+    background: #dee2e6 !important;
+    color: #667eea !important;
+}
+
+.submenu-link {
+    padding: 0.5rem 1.5rem 0.5rem 3rem !important;
+    font-size: 0.875rem;
+    color: #6c757d !important;
+    margin-left: 0;
+    border-left: 2px solid transparent;
+    text-decoration: none;
+}
+
+.submenu-link:hover {
+    background: #e9ecef !important;
+    color: #667eea !important;
+    border-left-color: #667eea;
+    text-decoration: none;
+}
+
+.submenu-link.active {
+    background: #667eea !important;
+    color: white !important;
+    border-left-color: #5a67d8;
+    text-decoration: none;
+}
+
+.submenu-link .badge {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.4rem;
+    min-width: 1.5rem;
+    text-align: center;
+}
+
+/* Adjust main content when sidebar is present */
+body.admin-layout {
+    margin-left: 280px;
+}
+
+/* Mobile responsive */
+@media (max-width: 991.98px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+        top: 56px;
+        height: calc(100vh - 56px);
+    }
+    
+    .sidebar-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    body.admin-layout {
+        margin-left: 0;
+    }
+    
+    .admin-sidebar.show {
+        transform: translateX(0);
+    }
+}
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+            <img src="/assets/logo.png" alt="CaminhoIT Icon" style="height:35px;">
+            <span class="logo-text-nav">
+                CAMINHO<span class="it">IT</span>
+            </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+            <ul class="navbar-nav align-items-center gap-3">
+
+                <!-- Homepage Link -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/index.php">
+                        <i class="bi bi-house me-1"></i>
+                        Homepage
+                    </a>
+                </li>
+
+                <!-- Dashboard Link -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/members/dashboard.php">
+                        <i class="bi bi-speedometer2 me-1"></i>
+                        Dashboard
+                    </a>
+                </li>
+
+                <!-- Support Dropdown with Badge -->
+                                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="supportDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="position: relative;">
+                            <i class="bi bi-headset me-1"></i>
+                            Support
+                                                    </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/members/raise-ticket.php">
+                                <i class="bi bi-plus-circle me-2"></i>
+                                Raise Support Request
+                            </a></li>
+                            <li><a class="dropdown-item" href="/members/my-ticket.php">
+                                <i class="bi bi-list-ul me-2"></i>
+                                My Support Requests
+                            </a></li>
+                            <li><a class="dropdown-item" href="/kb/">
+                                <i class="bi bi-plus-circle me-2"></i>
+                                Knowledgebase
+                            </a></li>
+                            <li><a class="dropdown-item" href="/blog/">
+                                <i class="bi bi-journal-text me-1"></i>
+                                Blog
+                            </a></li>
+                        </ul>
+                    </li>
+                
+                <!-- Services Dropdown -->
+                                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-gear me-1"></i>
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/members/my-services.php">
+                                <i class="bi bi-list me-2"></i>
+                                My Services
+                            </a></li>
+                            <li><a class="dropdown-item" href="/members/manage-services.php">
+                                <i class="bi bi-sliders me-2"></i>
+                                Manage Allocation
+                            </a></li>
+                            <li><a class="dropdown-item" href="/members/service-catalog.php">
+                                <i class="bi bi-book me-2"></i>
+                                Service Catalog
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/members/create-order.php">
+                                <i class="bi bi-cart-plus me-2"></i>
+                                Place Order
+                            </a></li>
+                            <li><a class="dropdown-item" href="/members/orders.php">
+                                <i class="bi bi-bag-check me-2"></i>
+                                Orders
+                            </a></li>
+                            <li><a class="dropdown-item" href="/members/view-order.php">
+                                <i class="bi bi-cart-plus me-2"></i>
+                                View Orders
+                            </a></li>
+                            <li><a class="dropdown-item" href="/members/quotes.php">
+                                <i class="bi bi-file-text me-2"></i>
+                                Quotes
+                            </a></li>
+                            <li><a class="dropdown-item" href="/members/view-invoice.php">
+                                <i class="bi bi-cart-plus me-2"></i>
+                                View Invoices
+                            </a></li>
+                            <li><a class="dropdown-item" href="/members/process-payment.php">
+                                <i class="bi bi-cart-plus me-2"></i>
+                                Process Payment
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/members/company-info.php">
+                                <i class="bi bi-building me-2"></i>
+                                Company Management
+                            </a></li>
+                        </ul>
+                    </li>
+                
+                <!-- Shopping Cart -->
+                                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/members/cart.php" style="position: relative;">
+                            <i class="bi bi-cart3 me-1"></i>
+                            Cart
+                            <span id="cartCount" class="nav-notification-badge" style="display: none;">0</span>
+                        </a>
+                    </li>
+                
+                <!-- My Services for regular users -->
+                                
+                <!-- Language Switcher -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="langDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        🌍 EN                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="?lang=en">English</a></li>
+                        <li><a class="dropdown-item" href="?lang=pt">Português</a></li>
+                    </ul>
+                </li>
+
+                <!-- User Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="dropdown-toggle user-dropdown-btn" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="user-avatar">
+                            JA                        </div>
+                        <span>Hi, Jack J</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="/members/dashboard.php">
+                            <i class="bi bi-speedometer2 me-2"></i>
+                            Dashboard
+                        </a></li>
+                        <li><a class="dropdown-item" href="/members/account.php">
+                            <i class="bi bi-person-circle me-2"></i>
+                            My Account
+                        </a></li>
+                        <li><a class="dropdown-item" href="/members/raise-ticket.php">
+                            <i class="bi bi-headset me-2"></i>
+                            Support
+                        </a></li>
+                        <li><a class="dropdown-item" href="/members/my-services.php">
+                            <i class="bi bi-list me-2"></i>
+                            My Services
+                        </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item" href="/admin/dashboard.php">
+                                <i class="bi bi-shield-lock me-2"></i>
+                                Admin Panel
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="/logout.php">
+                            <i class="bi bi-box-arrow-right me-2"></i>
+                            Logout
+                        </a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- COMPLETE ADMINISTRATOR SIDEBAR WITH BLOG ADMIN -->
+<div class="admin-sidebar" id="adminSidebar">
+    <div class="sidebar-header">
+        <h5><i class="bi bi-gear-fill me-2"></i>Admin Panel</h5>
+        <button class="btn btn-sm btn-outline-secondary d-md-none" onclick="toggleSidebar()">
+            <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="nav flex-column">
+            <!-- Support System Section -->
+            <li class="nav-item">
+                <a class="nav-link" href="/operations/staff-analytics.php">
+                    <i class="bi bi-graph-up me-2"></i>Ticket Analytics
+                </a>
+            </li>
+            
+            <!-- Tickets Section Header -->
+            <li class="nav-item">
+                <a class="nav-link tickets-header" href="/operations/staff-tickets.php">
+                    <i class="bi bi-ticket me-2"></i>Support Tickets
+                    <i class="bi bi-chevron-up ms-auto"></i>
+                </a>
+            </li>
+            
+            <!-- Always Expanded Tickets Submenu -->
+            <li class="nav-item">
+                <a class="nav-link submenu-link" href="/operations/staff-tickets.php?status=unassigned">
+                    <i class="bi bi-person-dash me-2"></i>Awaiting Assignment
+                    <span class="badge bg-primary ms-auto">0</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link submenu-link" href="/operations/staff-tickets.php?status=pending_reply">
+                    <i class="bi bi-reply me-2"></i>Pending Your Reply
+                    <span class="badge bg-warning ms-auto">0</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link submenu-link" href="/operations/staff-tickets.php?status=unanswered">
+                    <i class="bi bi-question-circle me-2"></i>Unanswered
+                    <span class="badge bg-danger ms-auto">0</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link submenu-link" href="/operations/staff-tickets.php?status=unclosed">
+                    <i class="bi bi-unlock me-2"></i>Unclosed
+                    <span class="badge bg-info ms-auto">0</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link submenu-link" href="/operations/staff-tickets.php?status=assigned_to_me">
+                    <i class="bi bi-person-check me-2"></i>Assigned to you
+                    <span class="badge bg-success ms-auto">17</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link submenu-link" href="/operations/staff-tickets.php?status=all">
+                    <i class="bi bi-list-ul me-2"></i>All Tickets
+                    <span class="badge bg-secondary ms-auto">21</span>
+                </a>
+            </li>
+
+            <!-- BLOG ADMINISTRATION SECTION - COLLAPSED BY DEFAULT -->
+            <li class="nav-item mt-3">
+                <a class="nav-link" href="#" onclick="toggleBlogSubmenu()" id="blogHeader">
+                    <i class="bi bi-journal-text me-2"></i>Blog Management
+                    <i class="bi bi-chevron-down ms-auto" id="blogChevron"></i>
+                </a>
+            </li>
+            
+            <!-- Blog Submenu - HIDDEN BY DEFAULT -->
+            <div id="blogSubmenu" style="display: none;">
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/blog/admin/dashboard.php">
+                        <i class="bi bi-speedometer2 me-2"></i>Blog Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/blog/admin/posts/index.php">
+                        <i class="bi bi-file-text me-2"></i>All Posts
+                        <span class="badge bg-info ms-auto">3</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/blog/admin/posts/create.php">
+                        <i class="bi bi-plus-circle me-2"></i>New Post
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/blog/admin/posts/index.php?status=draft">
+                        <i class="bi bi-file-earmark me-2"></i>Drafts
+                        <span class="badge bg-secondary ms-auto">0</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/blog/admin/posts/index.php?status=published">
+                        <i class="bi bi-check-circle me-2"></i>Published
+                        <span class="badge bg-success ms-auto">2</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/blog/admin/posts/index.php?status=scheduled">
+                        <i class="bi bi-clock me-2"></i>Scheduled
+                        <span class="badge bg-warning ms-auto">0</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/blog/admin/categories/index.php">
+                        <i class="bi bi-tags me-2"></i>Categories
+                        <span class="badge bg-primary ms-auto">4</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/blog/admin/media/index.php">
+                        <i class="bi bi-images me-2"></i>Media Library
+                        <span class="badge bg-purple ms-auto">2</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/blog/admin/settings.php">
+                        <i class="bi bi-gear me-2"></i>Blog Settings
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/blog/" target="_blank">
+                        <i class="bi bi-eye me-2"></i>View Blog
+                        <i class="bi bi-box-arrow-up-right ms-1" style="font-size: 0.75rem;"></i>
+                    </a>
+                </li>
+            </div>
+
+            <!-- BOOKING MANAGEMENT SECTION -->
+            <li class="nav-item mt-3">
+                <a class="nav-link" href="#" onclick="toggleBookingSubmenu()" id="bookingHeader">
+                    <i class="bi bi-calendar-check me-2"></i>Booking System
+                    <i class="bi bi-chevron-down ms-auto" id="bookingChevron"></i>
+                </a>
+            </li>
+
+            <!-- Booking Submenu - HIDDEN BY DEFAULT -->
+            <div id="bookingSubmenu" style="display: none;">
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/admin/bookings.php">
+                        <i class="bi bi-list-ul me-2"></i>All Bookings
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/admin/bookings.php?status=pending">
+                        <i class="bi bi-hourglass me-2"></i>Pending
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/admin/bookings.php?status=confirmed">
+                        <i class="bi bi-check-circle me-2"></i>Confirmed
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/admin/booking-settings.php">
+                        <i class="bi bi-gear me-2"></i>Settings & Services
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/admin/booking-blocked-slots.php">
+                        <i class="bi bi-calendar-x me-2"></i>Blocked Dates
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/book.php" target="_blank">
+                        <i class="bi bi-eye me-2"></i>View Public Page
+                        <i class="bi bi-box-arrow-up-right ms-1" style="font-size: 0.75rem;"></i>
+                    </a>
+                </li>
+            </div>
+
+            <!-- ANALYTICS SECTION -->
+            <li class="nav-item mt-3">
+                <a class="nav-link" href="#" onclick="toggleAnalyticsSubmenu()" id="analyticsHeader">
+                    <i class="bi bi-graph-up-arrow me-2"></i>Analytics
+                    <i class="bi bi-chevron-down ms-auto" id="analyticsChevron"></i>
+                </a>
+            </li>
+
+            <!-- Analytics Submenu - HIDDEN BY DEFAULT -->
+            <div id="analyticsSubmenu" style="display: none;">
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/analytics/">
+                        <i class="bi bi-speedometer2 me-2"></i>Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/analytics/?period=today">
+                        <i class="bi bi-calendar-day me-2"></i>Today
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/analytics/?period=week">
+                        <i class="bi bi-calendar-week me-2"></i>This Week
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/analytics/?period=month">
+                        <i class="bi bi-calendar-month me-2"></i>This Month
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/analytics/visitor-activity.php">
+                        <i class="bi bi-people me-2"></i>Visitor Activity
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link submenu-link" href="/analytics/pages.php">
+                        <i class="bi bi-file-text me-2"></i>Top Pages
+                    </a>
+                </li>
+            </div>
+
+            <!-- System Management Section -->
+            <li class="nav-item mt-3">
+                <a class="nav-link" href="/operations/kb-dashboard.php">
+                    <i class="bi-book text-primary me-2"></i>Knowledgebase Dashboard
+                </a>
+            </li>
+            <li class="nav-item mt-3">
+                <a class="nav-link" href="/operations/manage-companies.php">
+                    <i class="bi bi-building me-2"></i>Manage Companies
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/operations/manage-users.php">
+                    <i class="bi bi-people me-2"></i>Manage Users
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/operations/manage-groups.php">
+                    <i class="bi bi-people-fill me-2"></i>Manage Support Groups
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/operations/service-catalog.php">
+                    <i class="bi bi-list-ul me-2"></i>Service Catalog
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/operations/product-assignments.php">
+                    <i class="bi bi-box me-2"></i>Product Assignments
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/operations/manage-subscriptions.php">
+                    <i class="bi bi-card-list me-2"></i>Manage Subscriptions
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/operations/orders.php">
+                    <i class="bi bi-cart me-2"></i>Orders
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/operations/create-order.php">
+                    <i class="bi bi-plus-circle me-2"></i>Create Order
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/operations/quotes.php">
+                    <i class="bi bi-file-text me-2"></i>Quotes
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/operations/invoices.php">
+                    <i class="bi bi-file-text me-2"></i>Invoices
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/system-config.php">
+                    <i class="bi bi-gear me-2"></i>System Configuration
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+
+<!-- Sidebar Toggle Button (for mobile) -->
+<button class="btn btn-primary sidebar-toggle d-md-none" onclick="toggleSidebar()">
+    <i class="bi bi-list"></i>
+</button>
+
+<!-- Sidebar Overlay (for mobile) -->
+<div class="sidebar-overlay d-md-none" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<script>
+// Sidebar functions
+function toggleSidebar() {
+    const sidebar = document.getElementById('adminSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    
+    if (sidebar && overlay) {
+        sidebar.classList.toggle('show');
+        overlay.classList.toggle('show');
+    }
+}
+
+function toggleBlogSubmenu() {
+    const submenu = document.getElementById('blogSubmenu');
+    const chevron = document.getElementById('blogChevron');
+    
+    if (submenu && chevron) {
+        if (submenu.style.display === 'none') {
+            submenu.style.display = 'block';
+            chevron.classList.remove('bi-chevron-down');
+            chevron.classList.add('bi-chevron-up');
+        } else {
+            submenu.style.display = 'none';
+            chevron.classList.remove('bi-chevron-up');
+            chevron.classList.add('bi-chevron-down');
+        }
+    }
+}
+
+function toggleBookingSubmenu() {
+    const submenu = document.getElementById('bookingSubmenu');
+    const chevron = document.getElementById('bookingChevron');
+
+    if (submenu && chevron) {
+        if (submenu.style.display === 'none') {
+            submenu.style.display = 'block';
+            chevron.classList.remove('bi-chevron-down');
+            chevron.classList.add('bi-chevron-up');
+        } else {
+            submenu.style.display = 'none';
+            chevron.classList.remove('bi-chevron-up');
+            chevron.classList.add('bi-chevron-down');
+        }
+    }
+}
+
+function toggleAnalyticsSubmenu() {
+    const submenu = document.getElementById('analyticsSubmenu');
+    const chevron = document.getElementById('analyticsChevron');
+
+    if (submenu && chevron) {
+        if (submenu.style.display === 'none') {
+            submenu.style.display = 'block';
+            chevron.classList.remove('bi-chevron-down');
+            chevron.classList.add('bi-chevron-up');
+        } else {
+            submenu.style.display = 'none';
+            chevron.classList.remove('bi-chevron-up');
+            chevron.classList.add('bi-chevron-down');
+        }
+    }
+}
+
+// Set admin layout and page type
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('adminSidebar');
+    if (sidebar) {
+        document.body.classList.add('admin-layout');
+    }
+
+    // Set data-page-type based on URL
+    const path = window.location.pathname;
+    if (path.startsWith('/admin/')) {
+        document.body.setAttribute('data-page-type', 'admin');
+    } else if (path.startsWith('/operations/')) {
+        document.body.setAttribute('data-page-type', 'operations');
+    }
+
+    // Update cart count badge on page load
+    const cartBadge = document.getElementById('cartCount');
+    if (cartBadge) {
+        fetch('/members/cart.php?ajax=count')
+            .then(r => r.json())
+            .then(data => {
+                if (data.count !== undefined && data.count > 0) {
+                    cartBadge.textContent = data.count;
+                    cartBadge.style.display = 'inline-block';
+                }
+            })
+            .catch(err => console.log('Cart count update failed:', err));
+    }
+});
+</script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Account | CaminhoIT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Preconnect to fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --warning-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --danger-gradient: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            --info-gradient: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f8fafc;
+        }
+
+        /* Enhanced Hero Section - Same as Template */
+        .hero-enhanced {
+            background: var(--primary-gradient);
+            position: relative;
+            overflow: hidden;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="0,100 1000,100 1000,20"/></svg>');
+            background-size: cover;
+            background-position: bottom;
+        }
+
+        .hero-enhanced::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        .hero-content-enhanced {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero-title-enhanced {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            line-height: 1.2;
+            color: white;
+        }
+
+        .hero-subtitle-enhanced {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .hero-btn {
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-btn-primary {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .hero-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .hero-btn-outline {
+            background: transparent;
+            color: white;
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .hero-btn-outline:hover {
+            background: white;
+            color: #667eea;
+            border-color: white;
+            text-decoration: none;
+        }
+
+        /* Cards and Content */
+        .overlap-cards {
+            margin-top: -100px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .info-section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .info-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .info-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .card {
+            background: white;
+            border: none;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-gradient);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Stats Card Enhancement */
+        .stats-card {
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .stats-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .stats-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Activity Card Enhancement */
+        .activity-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+
+        .activity-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            background: #f8fafc;
+            border-left: 4px solid transparent;
+            border-image: var(--primary-gradient) 1;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .activity-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Quick Actions Enhancement */
+        .quick-action {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin: 0.25rem 0;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quick-action::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .quick-action:hover::before {
+            left: 100%;
+        }
+
+        .quick-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Security Info Enhancement */
+        .security-info {
+            background: var(--success-gradient);
+            color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(17, 153, 142, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .security-info::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: securityGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes securityGlow {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+        }
+
+        /* Company Badge Enhancement */
+        .company-badge {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 25px;
+            padding: 0.75rem 1.25rem;
+            margin: 0.5rem;
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #2c3e50;
+            transition: var(--transition);
+        }
+
+        .company-badge:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Status Badges */
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-open { 
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+        }
+        .status-closed { 
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            color: white;
+        }
+        .status-in-progress { 
+            background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+            color: white;
+        }
+        .status-awaiting { 
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+        }
+
+        /* Account Created Enhancement */
+        .account-created {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title-enhanced {
+                font-size: 2.5rem;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .info-section,
+            .stats-card,
+            .activity-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Custom Icon Colors */
+        .text-purple { color: #667eea !important; }
+        .text-primary { color: #4facfe !important; }
+        .text-success { color: #11998e !important; }
+        .text-warning { color: #f093fb !important; }
+        .text-danger { color: #ff6b6b !important; }
+        .text-info { color: #74b9ff !important; }
+
+        /* Enhanced Button Styles */
+        .btn-outline-primary {
+            border-color: #667eea;
+            color: #667eea;
+            transition: var(--transition);
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary-gradient);
+            border-color: transparent;
+            color: white;
+        }
+
+        .btn-outline-danger {
+            border-color: #ff6b6b;
+            color: #ff6b6b;
+            transition: var(--transition);
+        }
+
+        .btn-outline-danger:hover {
+            background: var(--danger-gradient);
+            border-color: transparent;
+            color: white;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Enhanced Hero Section - Same as Template -->
+<header class="hero-enhanced">
+    <div class="container">
+        <div class="hero-content-enhanced">
+            <h1 class="hero-title-enhanced">
+                <i class="bi bi-person-circle me-3"></i>
+                Welcome, Jack J            </h1>
+            <p class="hero-subtitle-enhanced">
+                Manage your account settings and view your activity overview with our comprehensive dashboard.
+            </p>
+            <div class="hero-actions">
+                <a href="/members/raise-ticket.php" class="hero-btn hero-btn-primary">
+                    <i class="bi bi-plus-circle"></i>
+                    Raise Ticket
+                </a>
+                <a href="/dashboard.php" class="hero-btn hero-btn-outline">
+                    <i class="bi bi-speedometer2"></i>
+                    Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container py-5 overlap-cards">
+    <div class="row">
+        <!-- Left Column - Profile Info -->
+        <div class="col-lg-8">
+            <!-- Profile Information -->
+            <div class="info-section fade-in">
+                <h2 class="section-title">
+                    <i class="bi bi-person-badge"></i>
+                    Profile Information
+                </h2>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-person-fill text-purple fs-1 mb-3"></i>
+                                <h5 class="card-title">Full Name</h5>
+                                <p class="card-text fw-bold">Jack J</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-envelope-at text-primary fs-1 mb-3"></i>
+                                <h5 class="card-title">Email Address</h5>
+                                <p class="card-text fw-bold">jackb@etherxi.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-patch-check-fill text-success fs-1 mb-3"></i>
+                                <h5 class="card-title">Account Role</h5>
+                                <p class="card-text fw-bold">Administrator</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-body text-center p-0">
+                                <div class="security-info">
+                                    <i class="bi bi-shield-check fs-1 mb-2" style="position: relative; z-index: 1;"></i>
+                                    <h5 class="mb-1" style="position: relative; z-index: 1;">Secured By</h5>
+                                    <p class="mb-0 fw-bold" style="position: relative; z-index: 1;">Google SSO</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                                    <div class="account-created">
+                        <i class="bi bi-calendar-check me-1"></i>
+                        Account created: April 28, 2025                    </div>
+                            </div>
+
+            <!-- Company Information -->
+            <div class="info-section fade-in">
+                <h2 class="section-title">
+                    <i class="bi bi-buildings"></i>
+                    Company Access
+                </h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 style="color: #2c3e50; margin-bottom: 1rem;">
+                            <i class="bi bi-building text-info me-2"></i>Primary Company
+                        </h5>
+                        <div class="company-badge">
+                            <strong>Test Company Ltd.</strong>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 style="color: #2c3e50; margin-bottom: 1rem;">
+                            <i class="bi bi-clipboard text-warning me-2"></i>Additional Access
+                        </h5>
+                                                                                    <div class="company-badge">
+                                    CaminhoIT                                </div>
+                                                                        </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+                        <div class="activity-card fade-in">
+                <h2 class="section-title">
+                    <i class="bi bi-clock-history"></i>
+                    Recent Activity
+                </h2>
+                                    <div class="activity-item">
+                        <div class="me-3">
+                            <i class="bi bi-ticket-perforated text-primary fs-5"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">sggds</div>
+                            <small class="text-muted">
+                                <i class="bi bi-calendar me-1"></i>
+                                Nov 26, 2025 11:09 PM                            </small>
+                        </div>
+                        <div>
+                            <span class="status-badge status-closed">
+                                Closed                            </span>
+                        </div>
+                    </div>
+                                    <div class="activity-item">
+                        <div class="me-3">
+                            <i class="bi bi-ticket-perforated text-primary fs-5"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">Test</div>
+                            <small class="text-muted">
+                                <i class="bi bi-calendar me-1"></i>
+                                Nov 6, 2025 12:42 PM                            </small>
+                        </div>
+                        <div>
+                            <span class="status-badge status-closed">
+                                Closed                            </span>
+                        </div>
+                    </div>
+                                    <div class="activity-item">
+                        <div class="me-3">
+                            <i class="bi bi-ticket-perforated text-primary fs-5"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">test</div>
+                            <small class="text-muted">
+                                <i class="bi bi-calendar me-1"></i>
+                                Nov 6, 2025 12:40 PM                            </small>
+                        </div>
+                        <div>
+                            <span class="status-badge status-closed">
+                                Closed                            </span>
+                        </div>
+                    </div>
+                                    <div class="activity-item">
+                        <div class="me-3">
+                            <i class="bi bi-ticket-perforated text-primary fs-5"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">Test</div>
+                            <small class="text-muted">
+                                <i class="bi bi-calendar me-1"></i>
+                                Nov 6, 2025 12:39 PM                            </small>
+                        </div>
+                        <div>
+                            <span class="status-badge status-closed">
+                                Closed                            </span>
+                        </div>
+                    </div>
+                                    <div class="activity-item">
+                        <div class="me-3">
+                            <i class="bi bi-ticket-perforated text-primary fs-5"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">Kian&#039;s website is down</div>
+                            <small class="text-muted">
+                                <i class="bi bi-calendar me-1"></i>
+                                Jul 6, 2025 2:00 AM                            </small>
+                        </div>
+                        <div>
+                            <span class="status-badge status-closed">
+                                Closed                            </span>
+                        </div>
+                    </div>
+                                <div class="text-center mt-4">
+                    <a href="/members/my-ticket.php" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-eye me-1"></i>View All Tickets
+                    </a>
+                </div>
+            </div>
+                    </div>
+
+        <!-- Right Column - Stats & Actions -->
+        <div class="col-lg-4">
+            <!-- Account Statistics -->
+            <div class="stats-card fade-in">
+                <h3 class="mb-4"><i class="bi bi-graph-up me-2"></i>Account Overview</h3>
+                
+                <div class="mb-4">
+                    <div class="stats-number">5</div>
+                    <div class="stats-label">Total Support Tickets</div>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="stats-number" style="color: #f093fb;">0</div>
+                    <div class="stats-label">Open Tickets</div>
+                </div>
+                
+                                
+                <div class="mb-4">
+                    <div class="stats-number" style="color: #11998e;">0</div>
+                    <div class="stats-label">Active Services</div>
+                </div>
+                
+                                <div class="mb-4">
+                    <div class="stats-number" style="color: #fdcb6e;">6</div>
+                    <div class="stats-label">Outstanding Invoices</div>
+                                            <small style="opacity: 0.8;">(£23.78)</small>
+                                    </div>
+                            </div>
+
+            <!-- Quick Actions -->
+            <div class="info-section fade-in">
+                <h3 class="section-title">
+                    <i class="bi bi-lightning"></i>
+                    Quick Actions
+                </h3>
+                <div class="d-grid gap-2">
+                    <a href="/members/raise-ticket.php" class="quick-action">
+                        <i class="bi bi-plus-circle"></i>
+                        <span>Raise New Ticket</span>
+                    </a>
+                    <a href="/members/my-ticket.php" class="quick-action">
+                        <i class="bi bi-ticket-perforated"></i>
+                        <span>View My Tickets</span>
+                    </a>
+                    <a href="/members/my-services.php" class="quick-action">
+                        <i class="bi bi-gear"></i>
+                        <span>Manage Services</span>
+                    </a>
+                    <a href="/members/view-invoices.php" class="quick-action">
+                        <i class="bi bi-receipt"></i>
+                        <span>View Invoices</span>
+                    </a>
+                                        <a href="/members/create-order.php" class="quick-action">
+                        <i class="bi bi-cart-plus"></i>
+                        <span>Place New Order</span>
+                    </a>
+                                        <a href="/dashboard.php" class="quick-action">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>Back to Dashboard</span>
+                    </a>
+                </div>
+                
+                <hr style="border-color: #e2e8f0; margin: 2rem 0;">
+                
+                <div class="d-grid">
+                    <a href="/logout.php" class="btn btn-outline-danger">
+                        <i class="bi bi-box-arrow-right me-2"></i>
+                        Logout
+                    </a>
+                </div>
+            </div>
+
+            <!-- Account Health -->
+            <div class="info-section fade-in">
+                <h3 class="section-title">
+                    <i class="bi bi-shield-check"></i>
+                    Account Health
+                </h3>
+                <div class="list-group list-group-flush">
+                    <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
+                        <span><i class="bi bi-check-circle text-success me-2"></i>Email Verified</span>
+                        <span class="badge bg-success rounded-pill">Active</span>
+                    </div>
+                    <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
+                        <span><i class="bi bi-shield-check text-success me-2"></i>SSO Enabled</span>
+                        <span class="badge bg-success rounded-pill">Secure</span>
+                    </div>
+                    <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
+                        <span><i class="bi bi-person-check text-success me-2"></i>Profile Complete</span>
+                        <span class="badge bg-success rounded-pill">100%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all fade-in elements
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Enhanced card hover effects
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+
+    // Interactive quick actions
+    const quickActions = document.querySelectorAll('.quick-action');
+    quickActions.forEach(action => {
+        action.addEventListener('click', function(e) {
+            // Add ripple effect
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.style.position = 'absolute';
+            ripple.style.borderRadius = '50%';
+            ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+            ripple.style.transform = 'scale(0)';
+            ripple.style.animation = 'ripple 0.6s linear';
+            ripple.style.pointerEvents = 'none';
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+
+    // Add CSS for ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        .quick-action {
+            position: relative;
+            overflow: hidden;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Stats counter animation
+    const statsNumbers = document.querySelectorAll('.stats-number');
+    statsNumbers.forEach(stat => {
+        const finalValue = parseInt(stat.textContent);
+        if (finalValue > 0 && finalValue < 1000) {
+            let currentValue = 0;
+            const increment = finalValue / 50;
+            const timer = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= finalValue) {
+                    stat.textContent = finalValue;
+                    clearInterval(timer);
+                } else {
+                    stat.textContent = Math.floor(currentValue);
+                }
+            }, 20);
+        }
+    });
+
+    // Smooth scrolling for hero buttons
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
+</script>
+<style>
+    .footer-enhanced { 
+        margin-bottom: 0 !important; 
+        padding-bottom: 0 !important; 
+    }
+    body::after, html::after { 
+        display: none !important; 
+    }
+    /* Cookie Notice Styles (right aligned) */
+    .cookie-notice {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: auto;
+        z-index: 1055;
+        background: #fff;
+        color: #222;
+        padding: 1.5rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 24px rgba(20,0,80,0.08), 0 1.5px 8px rgba(0,0,0,0.06);
+        transition: bottom 0.3s;
+        margin: 1.5rem;
+        border-radius: 12px;
+        min-width: 300px;
+        max-width: 350px;
+    }
+    .cookie-content {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.25rem;
+        width: 100%;
+    }
+    .cookie-icon {
+        font-size: 2rem;
+        margin-right: 0.5rem;
+        margin-top: 0.2rem;
+    }
+    .cookie-text {
+        flex: 1;
+    }
+    .cookie-title {
+        margin: 0 0 0.25rem 0;
+        font-weight: 600;
+        font-size: 1.05rem;
+    }
+    .cookie-description {
+        margin: 0 0 1rem 0;
+        font-size: 0.97rem;
+        color: #333;
+    }
+    .cookie-actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+    .btn-cookie-info,
+    .btn-cookie-accept {
+        background: #f3f3f8;
+        color: #3740ff;
+        border: none;
+        border-radius: 0.25rem;
+        padding: 0.45rem 1rem;
+        font-size: 0.95rem;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 0.2s;
+        font-weight: 500;
+    }
+    .btn-cookie-accept {
+        background: #6641fa;
+        color: #fff;
+    }
+    .btn-cookie-info:hover {
+        background: #ecebf7;
+        text-decoration: none;
+    }
+    .btn-cookie-accept:hover {
+        background: #47349d;
+        color: #fff;
+        text-decoration: none;
+    }
+    .cookie-close {
+        background: transparent;
+        border: none;
+        color: #aaa;
+        font-size: 1.1rem;
+        margin-left: 0.3rem;
+        margin-top: 0.15rem;
+        cursor: pointer;
+        line-height: 1;
+        padding: 0.15rem;
+        transition: color 0.15s;
+        border-radius: 50%;
+    }
+    .cookie-close:hover {
+        color: #222;
+        background: #eee;
+    }
+    /* Floating Book Button - Enhanced */
+    .floating-book-btn {
+        position: fixed !important;
+        bottom: 30px !important;
+        right: 30px !important;
+        z-index: 1050 !important;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        color: white !important;
+        padding: 16px 28px !important;
+        border-radius: 50px !important;
+        text-decoration: none !important;
+        box-shadow:
+            0 8px 24px rgba(102, 126, 234, 0.3),
+            0 2px 8px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+        font-weight: 700 !important;
+        font-size: 1rem !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+        border: 2px solid rgba(255, 255, 255, 0.2) !important;
+        backdrop-filter: blur(10px) !important;
+        overflow: hidden !important;
+        width: auto !important;
+        max-width: 250px !important;
+    }
+
+    /* Gradient overlay animation */
+    .floating-book-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.6s ease;
+    }
+
+    .floating-book-btn:hover::before {
+        left: 100%;
+    }
+
+    .floating-book-btn:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow:
+            0 16px 40px rgba(102, 126, 234, 0.45),
+            0 4px 12px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        color: white;
+        text-decoration: none;
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .floating-book-btn:active {
+        transform: translateY(-2px) scale(1.02);
+    }
+
+    .floating-book-btn i {
+        font-size: 1.3rem;
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 1;
+    }
+
+    .floating-book-btn:hover i {
+        transform: rotate(15deg) scale(1.1);
+    }
+
+    .floating-book-btn span {
+        position: relative;
+        z-index: 1;
+        letter-spacing: 0.3px;
+    }
+
+    /* Subtle pulse glow effect */
+    @keyframes glow-pulse {
+        0%, 100% {
+            box-shadow:
+                0 8px 24px rgba(102, 126, 234, 0.3),
+                0 2px 8px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        50% {
+            box-shadow:
+                0 8px 28px rgba(102, 126, 234, 0.4),
+                0 2px 8px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+    }
+
+    .floating-book-btn {
+        animation: glow-pulse 3s ease-in-out infinite;
+    }
+
+    .floating-book-btn:hover {
+        animation: none;
+    }
+
+    /* Hide on admin/operations pages */
+    body[data-page-type="admin"] .floating-book-btn,
+    body[data-page-type="operations"] .floating-book-btn {
+        display: none;
+    }
+    @media (max-width: 600px) {
+        .floating-book-btn {
+            bottom: 20px;
+            right: 20px;
+            padding: 14px 20px;
+            font-size: 0.9rem;
+        }
+    }
+    @media (max-width: 600px) {
+        .cookie-notice {
+            left: 0;
+            right: 0;
+            margin: 0.7rem;
+            min-width: 0;
+            max-width: unset;
+        }
+        .cookie-content {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+</style>
+
+<footer class="footer-enhanced">
+        <div class="footer-gradient">
+            <div class="container">
+                <!-- Main Footer Content -->
+                <div class="row g-4 py-5">
+                    <!-- Brand Section -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-brand">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="/assets/logo.png" alt="CaminhoIT" class="footer-logo me-3" style="height: 48px;">
+                                <div class="brand-text">
+                                    <h4 class="mb-0">CAMINHO<span class="it-accent">IT</span></h4>
+                                    <small class="brand-tagline">Powering Smarter IT - Sustainably.</small>
+                                </div>
+                            </div>
+                            <p class="footer-description">
+                                Empowering businesses to thrive sustainably through smarter IT, responsible innovation, and reliable support — your trusted partner in ethical digital transformation.                            </p>
+                            <div class="social-links">
+                                <a href="#" class="social-link" title="LinkedIn" aria-label="LinkedIn">
+                                    <i class="bi bi-linkedin"></i>
+                                </a>
+                                <a href="https://x.com/CaminhoIT" target="_BLANK" class="social-link" title="Twitter" aria-label="Twitter">
+                                    <i class="bi bi-twitter"></i>
+                                </a>
+                                <a href="https://facebook.com/CaminhoIT" target="_BLANK" class="social-link" title="Facebook" aria-label="Facebook">
+                                    <i class="bi bi-facebook"></i>
+                                </a>
+                                <a href="#" class="social-link" title="GitHub" aria-label="GitHub">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                                <a href="#" class="social-link" title="Email" aria-label="Email">
+                                    <i class="bi bi-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quick Links -->
+                    <div class="col-lg-2 col-md-6">
+                        <h5 class="footer-heading">Platform</h5>
+                        <ul class="footer-links">
+                            <li><a href="https://caminhoit.com/members/dashboard.php">Dashboard</a></li>
+                            <li><a href="/members/my-services.php">Services</a></li>
+                            <li><a href="/members/view-invoice.php">Billing</a></li>
+                            <li><a href="/members/account.php">Account</a></li>
+                        </ul>
+                    </div>
+                    <!-- Support -->
+                    <div class="col-lg-2 col-md-6">
+                        <h5 class="footer-heading">Support</h5>
+                        <ul class="footer-links">
+                            <li><a href="/book.php"><i class="bi bi-calendar-check me-1"></i>Book Consultation</a></li>
+                            <li><a href="/kb">Knowledgebase</a></li>
+                            <li><a href="/members/raise-ticket.php">Submit Ticket</a></li>
+                            <li><a href="/status">System Status</a></li>
+                            <li><a href="/contact">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <!-- Legal -->
+                    <div class="col-lg-2 col-md-6">
+                        <h5 class="footer-heading">Legal</h5>
+                        <ul class="footer-links">
+                            <li><a href="/privacy-policy">Privacy Policy</a></li>
+                            <li><a href="/terms-of-service">Terms of Service</a></li>
+                            <li><a href="/compliance">Security & Compliance</a></li>
+                            <li><a href="/gdpr">GDPR</a></li>
+                        </ul>
+                    </div>
+                    <!-- Contact Info -->
+                    <div class="col-lg-2 col-md-6">
+                        <h5 class="footer-heading">Contact</h5>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="bi bi-envelope-at"></i>
+                                <div>
+                                    <strong>Support</strong>
+                                    <br><a href="mailto:support@caminhoit.com">support@caminhoit.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="bi bi-telephone"></i>
+                                <div>
+                                    <strong>WhatsApp</strong>
+                                    <br><a href="https://wa.me/351963452653" target="_BLANK">+351 963 452 653</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="bi bi-clock"></i>
+                                <div>
+                                    <strong>Available</strong>
+                                    <br>24/7 Support                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bottom Bar -->
+                <div class="footer-bottom">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <p class="mb-0 footer-copyright">
+                                &copy; 2025 CaminhoIT. All rights reserved.                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="footer-badges">
+                                <div class="security-badge" title="SSL Secured">
+                                    <i class="bi bi-shield-check"></i>
+                                    <span>SSL Secured</span>
+                                </div>
+                                <div class="security-badge" title="GDPR Compliant">
+                                    <i class="bi bi-check-circle"></i>
+                                    <span>GDPR Compliant</span>
+                                </div>
+                                <!---<div class="security-badge" title="ISO 27001">
+                                    <i class="bi bi-award"></i>
+                                    <span>ISO 27001</span>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Background Animation (optional) -->
+        <div class="footer-background">
+            <div class="footer-shape footer-shape-1"></div>
+            <div class="footer-shape footer-shape-2"></div>
+            <div class="footer-shape footer-shape-3"></div>
+        </div>
+</footer>
+
+<!-- Floating Health Check Button (outside footer) -->
+<a href="/health-check.php" class="floating-book-btn" id="floatingBookBtn" style="position: fixed !important; bottom: 30px !important; right: 30px !important; z-index: 9999 !important;">
+    <i class="bi bi-heart-pulse"></i>
+    <span>Start Health Check</span>
+</a>
+
+<!-- Enhanced Cookie Notice (bottom right) -->
+<div id="cookieNotice" class="cookie-notice">
+    <div class="cookie-content">
+        <div class="cookie-icon">🍪</div>
+        <div class="cookie-text">
+            <h6 class="cookie-title">We respect your privacy</h6>
+            <p class="cookie-description">
+                We only use essential cookies for authentication and preferences. No tracking, no analytics, just the basics to keep things working smoothly.            </p>
+            <div class="cookie-actions">
+                <a href="/compliance#cookies" class="btn-cookie-info">
+                    <i class="bi bi-info-circle me-1"></i>Cookie Policy                </a>
+                <button onclick="acceptCookies()" class="btn-cookie-accept">
+                    <i class="bi bi-check-lg me-1"></i>Got it!                </button>
+            </div>
+        </div>
+        <button onclick="acceptCookies()" class="cookie-close" aria-label="Close cookie notice">
+            <i class="bi bi-x"></i>
+        </button>
+    </div>
+</div>
+
+<!-- Bootstrap Bundle JS (optional, for Bootstrap components) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- CaminhoIT Analytics - Privacy-focused tracking -->
+<script src="/analytics/track.js" async defer></script>
+
+<script>
+function acceptCookies() {
+    var notice = document.getElementById('cookieNotice');
+    if (notice) {
+        // Use !important to override any possible persistent CSS
+        notice.style.setProperty('display', 'none', 'important');
+        localStorage.setItem('cookieNoticeAccepted', 'true');
+    }
+}
+// On load, hide notice if already accepted
+window.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('cookieNoticeAccepted') === 'true') {
+        var notice = document.getElementById('cookieNotice');
+        if (notice) notice.style.setProperty('display', 'none', 'important');
+    }
+});
+</script></body>
+</html>
