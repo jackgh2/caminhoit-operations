@@ -1,0 +1,754 @@
+/* RESET & GLOBAL STYLING */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+}
+
+h1, h2, h5 {
+    font-weight: 700;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* ✅ NAVBAR */
+.navbar {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(0, 83, 156, 0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 12px 0;
+}
+
+.navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar .navbar-brand img {
+    height: 35px;
+}
+
+.navbar .nav-link {
+    color: #ffffff !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: #b0c4de !important;
+}
+
+.navbar .btn-outline-light {
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 50px;
+    padding: 6px 20px;
+    transition: all 0.3s ease;
+}
+
+.navbar .btn-outline-light:hover {
+    background-color: #ffffff;
+    color: #00539c;
+}
+
+.navbar .dropdown-menu {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.navbar .dropdown-item {
+    color: #00539c;
+    font-weight: 500;
+}
+
+.navbar .dropdown-item:hover {
+    background-color: #f1f4f8;
+    color: #00539c;
+}
+
+/* ✅ LOGO FONT STYLE */
+.logo-text-nav {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+}
+
+.logo-text-nav .it {
+    color: #a7b9cf;
+}
+
+/* ✅ HERO SECTION */
+.hero {
+    position: relative;
+    height: 45vh; /* Adjusted height for better balance */
+    background: url('/assets/hero-bg.jpg') center center / cover no-repeat;
+    color: #ffffff;
+    text-align: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 66, 116, 0.75);
+    z-index: 1;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+    top: 30%; /* Center the hero content nicely */
+}
+
+/* ✅ HERO TEXT STYLING */
+.hero h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.hero p.lead {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+/* ✅ BUTTONS */
+.btn-custom {
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: 0.3s;
+}
+
+.btn-custom-primary {
+    background-color: #ffffff;
+    color: #00539c;
+    border: 2px solid #ffffff;
+}
+
+.btn-custom-primary:hover {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.btn-custom-secondary {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.btn-custom-secondary:hover {
+    background-color: #ffffff;
+    color: #00539c;
+}
+
+/* ✅ SECTION BOXES */
+.section-container {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 60px 40px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+    margin-top: -80px;
+    z-index: 5;
+    position: relative;
+}
+
+.section-heading {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+/* ✅ ICONS */
+.icon-feature {
+    font-size: 3rem;
+    color: #00539c;
+    margin-bottom: 15px;
+}
+
+/* LOGIN PAGE STYLING */
+body.login-page {
+    background-color: #f8f9fa;
+}
+
+/* LOGIN PAGE HERO */
+/* LOGIN PAGE HERO */
+.login-page .hero.login-hero {
+    height: 45vh;
+    background: url('/assets/hero-bg.jpg') center center / cover no-repeat;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: relative;
+}
+
+.login-page .hero-content {
+    top: 25%;
+}
+
+/* ✅ Overlapping Login Box Styling */
+.login-page .login-box {
+    background-color: #ffffff;
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+    position: relative;
+    z-index: 5;
+    margin-top: -120px; /* Overlaps the hero properly */
+    text-align: center;
+}
+
+/* ✅ Overlapping Login Box Styling (Fixed) */
+.login-overlap-box {
+    position: relative;
+    z-index: 5;
+    margin-top: -100px; /* Overlap up into the hero */
+}
+
+.login-page .login-box {
+    background-color: #ffffff;
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    max-width: 1400px;
+    width: 90%;
+}
+
+/* Logo inside login box */
+.login-page .login-box img {
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+
+/* ✅ LOGO INSIDE THE LOGIN BOX */
+.login-page .login-box img {
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+/* ✅ BUTTONS MAKEOVER */
+.btn-login {
+    border-radius: 50px;
+    padding: 15px 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: 0.3s ease;
+    width: 100%;
+}
+
+.btn-google {
+    background-color: #db4437;
+    color: #ffffff;
+}
+
+.btn-google:hover {
+    background-color: #c23321;
+}
+
+.btn-microsoft {
+    background-color: #0078d4;
+    color: #ffffff;
+}
+
+.btn-microsoft:hover {
+    background-color: #005a9e;
+}
+
+.btn-discord {
+    background-color: #23272a;
+    color: #ffffff;
+}
+
+.btn-discord:hover {
+    background-color: #1e2124;
+}
+
+/* Gap between buttons */
+.login-box .d-grid .btn {
+    margin-bottom: 10px;
+}
+
+/* Dashboard Hero */
+.dashboard-hero {
+    height: 40vh;
+    background: url('https://caminhoit.com/assets/hero-bg.jpg') center center / cover no-repeat;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: relative;
+}
+
+.dashboard-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 66, 116, 0.75);
+    z-index: 1;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.dashboard-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    top: 25%;
+    text-align: center;
+}
+
+/* Stat Cards */
+.stat-card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card h4 {
+    font-size: 2rem;
+    margin: 15px 0;
+}
+
+.stat-card p {
+    margin: 0;
+    font-weight: 500;
+    color: #555;
+}
+
+.dashboard-box {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    padding: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.dashboard-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-box .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 15px 0;
+}
+
+.dashboard-box .stat-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.dashboard-overlap-section {
+    margin-top: -100px; /* Pull it up into the hero */
+    position: relative;
+    z-index: 5;
+}
+
+.dashboard-overlap-section .dashboard-box {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    padding: 30px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-overlap-section .dashboard-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-overlap-section .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 15px 0;
+}
+
+.dashboard-overlap-section .stat-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+}
+
+/* 🎉 Modern Button Styling */
+.btn-custom-primary {
+    background-color: #00539c;
+    color: #ffffff;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-weight: 600;
+    transition: 0.3s ease all;
+    box-shadow: 0 4px 15px rgba(0, 83, 156, 0.3);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-custom-primary::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background-color: #ffffff;
+    z-index: -1;
+    transition: 0.4s ease all;
+}
+
+.btn-custom-primary:hover {
+    color: #00539c;
+    border-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 83, 156, 0.5);
+}
+
+.btn-custom-primary:hover::before {
+    width: 100%;
+}
+
+/* Optional: Secondary Button Styling */
+.btn-custom-secondary {
+    background-color: transparent;
+    color: #00539c;
+    border: 2px solid #00539c;
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-weight: 600;
+    transition: 0.3s ease all;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-custom-secondary::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background-color: #00539c;
+    z-index: -1;
+    transition: 0.4s ease all;
+}
+
+.btn-custom-secondary:hover {
+    color: #ffffff;
+}
+
+.btn-custom-secondary:hover::before {
+    width: 100%;
+}
+
+
+.company-search-area {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px; /* Pull the container up into the hero */
+    z-index: 5;
+}
+
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.add-company-btn {
+    padding: 12px 20px;
+    border-radius: 50px;
+    background-color: #00539c;
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.add-company-btn:hover {
+    background-color: #003366;
+}
+
+.search-bar {
+    position: relative;
+    width: 400px;
+    transition: width 0.4s ease;
+}
+
+.search-bar input[type="text"] {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    border-radius: 50px;
+    border: 2px solid #00539c;
+    outline: none;
+    font-size: 1rem;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.search-bar input[type="text"]:focus {
+    border-color: #003366;
+    box-shadow: 0 6px 15px rgba(0, 83, 156, 0.3);
+}
+
+.search-bar .search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: #00539c;
+    pointer-events: none;
+}
+
+.modal-backdrop {
+    z-index: 1050 !important;
+}
+
+.modal.show {
+    z-index: 1060 !important;
+}
+
+.company-search-area {
+    z-index: 1; /* Make sure search stays below modal */
+    position: relative;
+}
+
+
+/* ABOUT */
+
+/* ✅ ABOUT PAGE STYLING */
+.about-page .section-container {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+/*    margin-top: 40px; */
+    margin-bottom: 40px;
+}
+
+.about-page .section-heading {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.about-page ul.list-group {
+    margin-top: 30px;
+}
+
+.about-page ul.list-group li {
+    padding: 15px 20px;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.about-page .card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.about-page .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.about-page .card-body {
+    padding: 25px;
+}
+
+.about-page .text-center.mb-5 h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.about-page .text-center.mb-5 p {
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+
+.about-page .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.about-page .card-text {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* ✅ ABOUT PAGE IMPROVED SPACING */
+.about-page .section-container {
+    padding: 30px 25px;
+/*    margin-top: 30px;
+    margin-bottom: 30px; */
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* ✅ Tighter spacing inside 'Our Story' paragraph box */
+.about-page .section-container p {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* ✅ 'Quote-style' highlight block */
+.highlight-quote {
+    border-left: 4px solid #00539c;
+    background-color: #f1f5fa;
+    padding: 15px 20px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.highlight-quote .quote-icon {
+    font-size: 1.3rem;
+    margin-top: 3px;
+    color: #00539c;
+}
+
+/* Tighter content box padding */
+.shadow-sm.p-4 {
+  padding: 1.25rem !important;
+}
+
+/* Optional: reduce vertical margins between sections */
+.mb-5 {
+  margin-bottom: 2.5rem !important;
+}
+
+
+/* Managed It Services */
+
+blockquote.blockquote {
+  background-color: #f8f9fa; /* Light grey */
+  border-left: 4px solid #007bff;
+}
+
+.blockquote-footer {
+    background: none !important;
+    color: #6c757d !important; /* Bootstrap's muted text color */
+    padding: 0;
+    margin-top: 1rem;
+    display: block;
+}
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(30%); /* make it darker for visibility on light bg */
+}
+
+
+/* Staff Ticket Review */
+.ticket-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.ticket-filters a {
+    background-color: #f8f9fa;
+    color: #212529;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    position: relative;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out, color 0.2s;
+}
+
+.ticket-filters a:hover {
+    background-color: #e2e6ea;
+    color: #000;
+}
+
+.ticket-filters a.active {
+    background-color: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+}
+
+.ticket-filters a .badge {
+    background-color: #6c757d;
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.35em 0.6em;
+    border-radius: 1rem;
+    position: absolute;
+    top: -6px;
+    right: -6px;
+}
+
+
+
+
+
+
+
+
+/* ✅ FOOTER */
+footer {
+    background: #00539c;
+    color: #ffffff;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+footer p {
+    margin: 0;
+}
