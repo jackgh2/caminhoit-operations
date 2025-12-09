@@ -1,0 +1,6 @@
+[09-Nov-2025 01:01:01 UTC] PHP Warning:  Undefined array key "DOCUMENT_ROOT" in /home/caminhoit/public_html/analytics/discord-report.php on line 10
+[09-Nov-2025 01:01:01 UTC] PHP Warning:  require_once(/includes/config.php): Failed to open stream: No such file or directory in /home/caminhoit/public_html/analytics/discord-report.php on line 10
+[09-Nov-2025 01:01:01 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/includes/config.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/caminhoit/public_html/analytics/discord-report.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/caminhoit/public_html/analytics/discord-report.php on line 10
