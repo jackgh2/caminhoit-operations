@@ -105,8 +105,8 @@ try {
     $support_data['open_tickets'] = 0;
 }
 
-// Tickets older than X days
-$days_filter = $_GET['days_filter'] ?? 2;
+// Tickets older than X days (validate input)
+$days_filter = isset($_GET['days_filter']) ? max(1, min(365, intval($_GET['days_filter']))) : 2;
 try {
     $stmt = $pdo->prepare("
         SELECT COUNT(*) 
@@ -1032,8 +1032,14 @@ if ($revenue_data['revenue_percentage'] < 70) {
             }
         });
 
-        // Auto refresh every 5 minutes
-        setTimeout(() => location.reload(), 5 * 60 * 1000);
+        // Auto refresh every 5 minutes (optional - user can disable via localStorage)
+        if (localStorage.getItem('dashboard-auto-refresh') !== 'disabled') {
+            setTimeout(() => location.reload(), 5 * 60 * 1000);
+        }
+        
+        // Add refresh control (for future enhancement)
+        // To disable: localStorage.setItem('dashboard-auto-refresh', 'disabled');
+        // To enable: localStorage.removeItem('dashboard-auto-refresh');
     </script>
 </body>
 </html>
