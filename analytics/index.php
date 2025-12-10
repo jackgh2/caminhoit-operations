@@ -332,7 +332,7 @@ $page_title = "Analytics Dashboard | CaminhoIT";
                 Track visitors, analyze behavior, and monitor performance with comprehensive analytics tools.
             </p>
             <div class="dashboard-hero-actions">
-                <select class="form-select" id="periodSelect" onchange="window.location.href='?period='+this.value" style="max-width: 200px; background: rgba(255,255,255,0.2); color: white; border-color: rgba(255,255,255,0.3);">
+                <select class="form-select hero-select" id="periodSelect" onchange="window.location.href='?period='+this.value">
                     <option value="today" <?= $period === 'today' ? 'selected' : '' ?>>Today</option>
                     <option value="7d" <?= $period === '7d' ? 'selected' : '' ?>>Last 7 Days</option>
                     <option value="30d" <?= $period === '30d' ? 'selected' : '' ?>>Last 30 Days</option>

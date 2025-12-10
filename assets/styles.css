@@ -2323,12 +2323,6 @@ footer p {
     color: var(--text-primary) !important;
 }
 
-:root.dark p,
-:root.dark span,
-:root.dark div {
-    color: var(--text-secondary);
-}
-
 :root.dark .text-muted,
 :root.dark small.text-muted {
     color: var(--text-muted) !important;
@@ -2453,5 +2447,18 @@ footer p {
 :root.dark .dashboard-hero-title,
 :root.dark .dashboard-hero-subtitle {
     color: white !important;
+}
+
+/* Hero Form Select */
+.hero-select {
+    max-width: 200px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border-color: rgba(255,255,255,0.3);
+}
+
+:root.dark .hero-select option {
+    background: #1e293b;
+    color: #e2e8f0;
 }
 }
