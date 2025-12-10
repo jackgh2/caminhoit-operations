@@ -1,0 +1,63 @@
+# CaminhoIT Robots.txt
+# Optimized for Google, Bing, and AI crawlers (ChatGPT, Claude, etc.)
+
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /analytics/
+
+# Block private/admin areas
+Disallow: /members/
+Disallow: /admin/
+Disallow: /staff/
+Disallow: /includes/
+Disallow: /public/
+Disallow: /vendor/
+Disallow: /*.log$
+Disallow: /error_log
+Disallow: /debug/
+
+# Block sensitive endpoints
+Disallow: /analytics/collect.php
+Disallow: /analytics/api.php
+Disallow: /login.php
+Disallow: /logout.php
+
+# AI-specific crawlers
+# ChatGPT/OpenAI
+User-agent: GPTBot
+Allow: /
+Allow: /about.php
+Allow: /services.php
+Allow: /contact.php
+Allow: /sustainability.php
+Disallow: /members/
+Disallow: /admin/
+
+# Google AI (Bard, Gemini)
+User-agent: Google-Extended
+Allow: /
+Disallow: /members/
+Disallow: /admin/
+
+# Claude (Anthropic)
+User-agent: ClaudeBot
+Allow: /
+Allow: /about.php
+Allow: /services.php
+Disallow: /members/
+Disallow: /admin/
+
+# Common Crawl (used by many AI models)
+User-agent: CCBot
+Allow: /
+Disallow: /members/
+Disallow: /admin/
+
+# Sitemap locations
+Sitemap: https://caminhoit.com/sitemap-index.xml.php
+Sitemap: https://caminhoit.com/sitemap.xml.php
+Sitemap: https://caminhoit.com/blog/sitemap.xml.php
+
+# Crawl delay (be nice to server)
+Crawl-delay: 1
