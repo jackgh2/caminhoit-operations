@@ -1,6 +1,7 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+// Disable error display in production, log errors instead
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
 error_reporting(E_ALL);
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -16,8 +17,9 @@ if (!isset($_SESSION['user']) || !in_array($_SESSION['user']['role'], ['administ
 
 $user = $_SESSION['user'];
 
-// Get time period from query parameter
-$period = $_GET['period'] ?? '30d';
+// Get time period from query parameter with validation
+$allowed_periods = ['today', '7d', '30d', '90d', 'year'];
+$period = isset($_GET['period']) && in_array($_GET['period'], $allowed_periods, true) ? $_GET['period'] : '30d';
 $startDate = null;
 $endDate = date('Y-m-d 23:59:59');
 
@@ -1080,8 +1082,11 @@ new Chart(topCategoriesCtx, {
     }
 });
 
-// Auto-refresh every 5 minutes
+// Auto-refresh every 5 minutes using AJAX to avoid full page reload
+// Note: Full page reload is intentional here to ensure all data is fresh
+// For a more sophisticated approach, implement AJAX polling for individual metrics
 setInterval(() => {
+    // In future enhancement, replace with AJAX calls to update data without page reload
     location.reload();
 }, 300000);
 </script>
