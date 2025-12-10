@@ -253,7 +253,8 @@ function timeAgo($datetime) {
         }
 
         :root.dark .breadcrumb-enhanced {
-            background: transparent;
+            background: rgba(30, 41, 59, 0.95);
+            border-color: rgba(71, 85, 105, 0.4);
         }
 
         :root.dark .breadcrumb-item a {
@@ -855,6 +856,16 @@ function timeAgo($datetime) {
         .image-preview:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Breadcrumb Enhanced */
+        .breadcrumb-enhanced {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         /* Dark Mode Styles */

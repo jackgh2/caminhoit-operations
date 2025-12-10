@@ -980,6 +980,49 @@ $page_title = "Service Catalog | CaminhoIT";
         html.dark .filter-section h3 { color: #a78bfa; }
         html.dark .view-toggle .btn { background: #0f172a; border-color: #334155; color: #e2e8f0; }
         html.dark .view-toggle .btn:hover { background: rgba(139, 92, 246, 0.1); border-color: #8b5cf6; }
+
+        /* Dark Mode for Category Cards */
+        html.dark .category-card {
+            background: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        html.dark .category-card:hover {
+            background: #0f172a !important;
+            border-color: #8b5cf6 !important;
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3) !important;
+        }
+
+        html.dark .category-card.selected {
+            background: rgba(139, 92, 246, 0.1) !important;
+            border-color: #8b5cf6 !important;
+        }
+
+        html.dark .category-title {
+            color: #f1f5f9 !important;
+        }
+
+        html.dark .category-card.selected .category-title {
+            color: #a78bfa !important;
+        }
+
+        html.dark .category-description {
+            color: #94a3b8 !important;
+        }
+
+        /* Enhanced Hover/Pop Effect for Category Cards */
+        .category-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.25);
+        }
+
+        html.dark .category-card:hover {
+            box-shadow: 0 12px 35px rgba(139, 92, 246, 0.4) !important;
+        }
     </style>
 
 <!-- Hero Section -->
