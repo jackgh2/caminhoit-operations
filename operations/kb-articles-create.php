@@ -611,6 +611,8 @@ $page_title = "Create New Article";
             selector: '#content',
             height: 400,
             menubar: false,
+            skin: (document.documentElement.classList.contains('dark') ? 'oxide-dark' : 'oxide'),
+            content_css: (document.documentElement.classList.contains('dark') ? 'dark' : 'default'),
             plugins: [
                 'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
                 'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',

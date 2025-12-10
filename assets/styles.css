@@ -2146,3 +2146,312 @@ footer p {
     border: 2px solid #5a67d8 !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
 }
+
+/* ========================================
+   COMPREHENSIVE DARK MODE SUPPORT
+======================================== */
+
+/* Dark Mode Color Variables */
+:root.dark {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --text-primary: #f1f5f9;
+    --text-secondary: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Global Dark Mode Styles */
+:root.dark body {
+    background: var(--bg-primary) !important;
+    color: var(--text-secondary) !important;
+}
+
+/* Cards and Containers */
+:root.dark .card,
+:root.dark .form-card,
+:root.dark .page-header,
+:root.dark .stat-card,
+:root.dark .chart-card,
+:root.dark .product-card,
+:root.dark .order-item,
+:root.dark .order-summary,
+:root.dark .main-container > div[class*="card"],
+:root.dark div[style*="background: white"],
+:root.dark div[style*="background:white"] {
+    background: var(--bg-secondary) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
+    box-shadow: var(--card-shadow) !important;
+}
+
+/* Form Elements */
+:root.dark .form-control,
+:root.dark .form-select,
+:root.dark input[type="text"],
+:root.dark input[type="email"],
+:root.dark input[type="password"],
+:root.dark input[type="number"],
+:root.dark input[type="date"],
+:root.dark input[type="time"],
+:root.dark textarea,
+:root.dark select {
+    background: var(--bg-tertiary) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+
+:root.dark .form-control:focus,
+:root.dark .form-select:focus {
+    background: var(--bg-tertiary) !important;
+    color: var(--text-secondary) !important;
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2) !important;
+}
+
+/* Tables */
+:root.dark .table {
+    color: var(--text-secondary) !important;
+    background: transparent !important;
+}
+
+:root.dark .table thead {
+    background: linear-gradient(135deg, #4c1d95 0%, #5b21b6 100%) !important;
+    color: white !important;
+}
+
+:root.dark .table th {
+    color: white !important;
+    background: transparent !important;
+    border-color: var(--border-color) !important;
+}
+
+:root.dark .table td {
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
+    background: transparent !important;
+}
+
+:root.dark .table tbody tr {
+    background: transparent !important;
+}
+
+:root.dark .table tbody tr:hover {
+    background: var(--bg-tertiary) !important;
+}
+
+:root.dark .table-responsive {
+    background: var(--bg-secondary) !important;
+    color: var(--text-secondary) !important;
+}
+
+/* Modals */
+:root.dark .modal-content {
+    background: var(--bg-secondary) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+
+:root.dark .modal-header {
+    border-bottom-color: var(--border-color) !important;
+}
+
+:root.dark .modal-footer {
+    border-top-color: var(--border-color) !important;
+}
+
+:root.dark .modal-title {
+    color: var(--text-primary) !important;
+}
+
+/* Alerts */
+:root.dark .alert {
+    border-color: var(--border-color) !important;
+}
+
+:root.dark .alert-success {
+    background: rgba(16, 185, 129, 0.15) !important;
+    color: #6ee7b7 !important;
+}
+
+:root.dark .alert-danger {
+    background: rgba(239, 68, 68, 0.15) !important;
+    color: #fca5a5 !important;
+}
+
+:root.dark .alert-warning {
+    background: rgba(245, 158, 11, 0.15) !important;
+    color: #fcd34d !important;
+}
+
+:root.dark .alert-info {
+    background: rgba(6, 182, 212, 0.15) !important;
+    color: #67e8f9 !important;
+}
+
+/* Badges */
+:root.dark .badge {
+    color: white !important;
+}
+
+:root.dark .badge-primary {
+    background: #4338ca !important;
+}
+
+:root.dark .badge-success {
+    background: #047857 !important;
+}
+
+:root.dark .badge-warning {
+    background: #b45309 !important;
+}
+
+:root.dark .badge-danger {
+    background: #b91c1c !important;
+}
+
+/* Text Colors */
+:root.dark h1,
+:root.dark h2,
+:root.dark h3,
+:root.dark h4,
+:root.dark h5,
+:root.dark h6 {
+    color: var(--text-primary) !important;
+}
+
+:root.dark p,
+:root.dark span,
+:root.dark div {
+    color: var(--text-secondary);
+}
+
+:root.dark .text-muted,
+:root.dark small.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* Borders */
+:root.dark hr,
+:root.dark .border,
+:root.dark [class*="border"] {
+    border-color: var(--border-color) !important;
+}
+
+/* Dropdowns */
+:root.dark .dropdown-menu {
+    background: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+
+:root.dark .dropdown-item {
+    color: var(--text-secondary) !important;
+}
+
+:root.dark .dropdown-item:hover {
+    background: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Nav Tabs */
+:root.dark .nav-tabs {
+    border-bottom-color: var(--border-color) !important;
+}
+
+:root.dark .nav-tabs .nav-link {
+    color: var(--text-muted) !important;
+}
+
+:root.dark .nav-tabs .nav-link.active {
+    color: #667eea !important;
+    background: transparent !important;
+    border-color: transparent transparent #667eea !important;
+}
+
+/* Lists */
+:root.dark .list-group-item {
+    background: var(--bg-secondary) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+
+:root.dark .list-group-item:hover {
+    background: var(--bg-tertiary) !important;
+}
+
+/* Progress Bars */
+:root.dark .progress {
+    background: var(--bg-tertiary) !important;
+}
+
+/* Breadcrumbs */
+:root.dark .breadcrumb {
+    background: var(--bg-secondary) !important;
+}
+
+:root.dark .breadcrumb-item {
+    color: var(--text-muted) !important;
+}
+
+:root.dark .breadcrumb-item.active {
+    color: var(--text-secondary) !important;
+}
+
+/* Pagination */
+:root.dark .pagination .page-link {
+    background: var(--bg-secondary) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+
+:root.dark .pagination .page-link:hover {
+    background: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+}
+
+:root.dark .pagination .page-item.active .page-link {
+    background: #667eea !important;
+    border-color: #667eea !important;
+}
+
+/* Specific Component Overrides */
+:root.dark .currency-info,
+:root.dark .vat-info,
+:root.dark .workflow-indicator {
+    background: var(--bg-tertiary) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-secondary) !important;
+}
+
+:root.dark .order-items {
+    background: var(--bg-primary) !important;
+}
+
+:root.dark .catalog-grid .product-card {
+    background: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+
+:root.dark .catalog-grid .product-card:hover {
+    border-color: #667eea !important;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3) !important;
+}
+
+:root.dark .catalog-grid .product-card.selected {
+    background: rgba(102, 126, 234, 0.1) !important;
+    border-color: #667eea !important;
+}
+
+/* Dashboard Hero Content */
+:root.dark .dashboard-hero-content {
+    color: white !important;
+}
+
+:root.dark .dashboard-hero-title,
+:root.dark .dashboard-hero-subtitle {
+    color: white !important;
+}
+}
