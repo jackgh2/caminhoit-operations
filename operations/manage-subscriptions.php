@@ -497,6 +497,36 @@ $page_title = "Manage Subscriptions | CaminhoIT";
         :root.dark .text-muted {
             color: #94a3b8 !important;
         }
+
+        /* Status Badge Dark Mode - Better Contrast */
+        :root.dark .status-badge {
+            font-weight: 700;
+        }
+
+        :root.dark .status-active { 
+            background: #065f46 !important; 
+            color: #d1fae5 !important; 
+        }
+
+        :root.dark .status-suspended { 
+            background: #92400e !important; 
+            color: #fed7aa !important; 
+        }
+
+        :root.dark .status-cancelled { 
+            background: #991b1b !important; 
+            color: #fecaca !important; 
+        }
+
+        :root.dark .status-pending { 
+            background: #1e40af !important; 
+            color: #dbeafe !important; 
+        }
+
+        :root.dark .status-overdue {
+            background: #7f1d1d !important;
+            color: #fca5a5 !important;
+        }
     </style>
 
 <!-- Hero Section -->

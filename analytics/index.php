@@ -319,85 +319,29 @@ $page_title = "Analytics Dashboard | CaminhoIT";
 <!-- HERO -->
 <header class="hero">
     <div class="hero-gradient"></div>
-
     <div class="container position-relative">
-        <div class="row align-items-center">
-            <div class="col-lg-7">
-                <div class="hero-eyebrow">
-                    <i class="bi bi-graph-up"></i>
-                    Website Analytics
-                </div>
-
-                <h1 class="hero-title">
-                    <span class="hero-title-line">
-                        Monitor Your
-                    </span>
-                    <span class="hero-title-line hero-title-highlight">
-                        Analytics Dashboard
-                        <span class="hero-title-highlight-tail"></span>
-                    </span>
-                    <span class="hero-title-line">
-                        Performance
-                    </span>
-                </h1>
-
-                <p class="hero-subtitle">
-                    Track visitors, analyze behavior, and monitor performance with comprehensive analytics tools.
-                </p>
-
-                <div class="hero-cta d-flex flex-wrap align-items-center gap-2">
-                    <select class="form-select" id="periodSelect" onchange="window.location.href='?period='+this.value" style="max-width: 200px;">
-                        <option value="today" <?= $period === 'today' ? 'selected' : '' ?>>Today</option>
-                        <option value="7d" <?= $period === '7d' ? 'selected' : '' ?>>Last 7 Days</option>
-                        <option value="30d" <?= $period === '30d' ? 'selected' : '' ?>>Last 30 Days</option>
-                        <option value="90d" <?= $period === '90d' ? 'selected' : '' ?>>Last 90 Days</option>
-                    </select>
-                    <a href="/analytics/visitor-activity.php" class="btn c-btn-ghost">
-                        <i class="bi bi-person-lines-fill me-1"></i>
-                        Visitor Activity
-                    </a>
-                </div>
-
-                <div class="hero-meta">
-                    <span><i class="bi bi-eye-fill"></i> Real-time tracking</span>
-                    <span><i class="bi bi-clock-history"></i> Historical data</span>
-                </div>
-            </div>
-
-            <!-- Snapshot card -->
-            <div class="col-lg-5 mt-5 mt-lg-0 d-none d-lg-block">
-                <div class="snapshot-card">
-                    <div class="snapshot-header">
-                        <span class="snapshot-label">Quick Stats</span>
-                    </div>
-
-                    <div class="snapshot-body">
-                        <div class="snapshot-metric">
-                            <span class="snapshot-metric-main" id="heroTotalVisitors">-</span>
-                            <span class="snapshot-metric-sub">total visitors</span>
-                        </div>
-
-                        <ul class="snapshot-list">
-                            <li>
-                                <i class="bi bi-eye"></i>
-                                <span id="heroTotalPageviews">-</span> page views tracked
-                            </li>
-                            <li>
-                                <i class="bi bi-clock"></i>
-                                <span id="heroAvgTime">-</span> avg. session time
-                            </li>
-                            <li>
-                                <i class="bi bi-graph-up"></i>
-                                Real-time monitoring active
-                            </li>
-                        </ul>
-
-                        <a href="/analytics/dashboard-v2.php" class="snapshot-cta">
-                            Advanced dashboard
-                            <i class="bi bi-arrow-right-short"></i>
-                        </a>
-                    </div>
-                </div>
+        <div class="dashboard-hero-content">
+            <h1 class="dashboard-hero-title">
+                <i class="bi bi-graph-up me-2"></i>
+                Website Analytics
+            </h1>
+            <p class="dashboard-hero-subtitle">
+                Monitor Your Analytics Dashboard Performance
+            </p>
+            <p class="dashboard-hero-subtitle">
+                Track visitors, analyze behavior, and monitor performance with comprehensive analytics tools.
+            </p>
+            <div class="dashboard-hero-actions">
+                <select class="form-select" id="periodSelect" onchange="window.location.href='?period='+this.value" style="max-width: 200px; background: rgba(255,255,255,0.2); color: white; border-color: rgba(255,255,255,0.3);">
+                    <option value="today" <?= $period === 'today' ? 'selected' : '' ?>>Today</option>
+                    <option value="7d" <?= $period === '7d' ? 'selected' : '' ?>>Last 7 Days</option>
+                    <option value="30d" <?= $period === '30d' ? 'selected' : '' ?>>Last 30 Days</option>
+                    <option value="90d" <?= $period === '90d' ? 'selected' : '' ?>>Last 90 Days</option>
+                </select>
+                <a href="/analytics/visitor-activity.php" class="btn c-btn-ghost">
+                    <i class="bi bi-person-lines-fill me-1"></i>
+                    Visitor Activity
+                </a>
             </div>
         </div>
     </div>
