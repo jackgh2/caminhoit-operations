@@ -199,7 +199,7 @@ $page_title = $translations['site_title'] ?? 'CaminhoIT – Smart, Sustainable I
                     <aside class="panel panel-soft">
                         <div class="panel-chip">
                             <i class="bi bi-tree"></i>
-                            <?= $translations['sustainability_intelligence'] ?? 'Sustainability intelligence'; ?>
+                            <?= $translations['sustainability_intelligence_title'] ?? 'ESG 2030 & Sustainability'; ?>
                         </div>
                         <h3 class="panel-title">
                             <?= $translations['it_efficient'] ?? 'IT that\'s efficient for your team and the planet'; ?>

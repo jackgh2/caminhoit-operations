@@ -443,6 +443,109 @@ $page_title = "Manage Support Groups | CaminhoIT";
                 gap: 0.5rem;
             }
         }
+
+        /* Dark Mode Styles */
+        :root.dark body {
+            background: #0f172a !important;
+        }
+
+        :root.dark .page-header {
+            background: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .page-header h1 {
+            color: #f1f5f9 !important;
+        }
+
+        :root.dark .page-header .subtitle {
+            color: #94a3b8 !important;
+        }
+
+        :root.dark .actions-bar {
+            background: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .groups-container {
+            background: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .groups-header {
+            background: #0f172a !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .groups-header h2 {
+            color: #f1f5f9 !important;
+        }
+
+        :root.dark .group-card {
+            background: #0f172a !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .group-card:hover {
+            background: #0f172a !important;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        :root.dark .group-card.inactive {
+            background: #1e293b !important;
+            border-color: #475569 !important;
+        }
+
+        :root.dark .group-name {
+            color: #f1f5f9 !important;
+        }
+
+        :root.dark .group-description {
+            color: #94a3b8 !important;
+        }
+
+        :root.dark .badge {
+            background: #334155 !important;
+            color: #cbd5e1 !important;
+        }
+
+        :root.dark .modal-content {
+            background: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .modal-header,
+        :root.dark .modal-footer,
+        :root.dark .modal-body {
+            border-color: #334155 !important;
+        }
+
+        :root.dark .modal-title {
+            color: #f1f5f9 !important;
+        }
+
+        :root.dark .form-label {
+            color: #cbd5e1 !important;
+        }
+
+        :root.dark .form-control,
+        :root.dark .form-select {
+            background: #0f172a !important;
+            border-color: #334155 !important;
+            color: #e2e8f0 !important;
+        }
+
+        :root.dark .form-control:focus,
+        :root.dark .form-select:focus {
+            background: #1e293b !important;
+            border-color: #8b5cf6 !important;
+            color: #e2e8f0 !important;
+        }
+
+        :root.dark small,
+        :root.dark .text-muted {
+            color: #94a3b8 !important;
+        }
 </style>
 
 <div class="main-container">
@@ -521,12 +624,14 @@ $page_title = "Manage Support Groups | CaminhoIT";
                                 <i class="bi bi-pencil"></i>
                                 Edit
                             </button>
-                            <a href="?toggle=<?= $group['id'] ?><?= $show_inactive ? '&show_inactive=1' : '' ?>" 
-                               class="btn btn-sm <?= $group['active'] ? 'btn-danger' : 'btn-success' ?>"
-                               onclick="return confirm('Are you sure you want to <?= $group['active'] ? 'disable' : 'enable' ?> this group?')">
+                            <button class="btn btn-sm <?= $group['active'] ? 'btn-danger' : 'btn-success' ?> toggle-group-btn"
+                               data-group-id="<?= $group['id'] ?>"
+                               data-group-name="<?= htmlspecialchars($group['name']) ?>"
+                               data-action="<?= $group['active'] ? 'disable' : 'enable' ?>"
+                               data-show-inactive="<?= $show_inactive ? '1' : '0' ?>">
                                 <i class="bi <?= $group['active'] ? 'bi-x-circle' : 'bi-check-circle' ?>"></i>
                                 <?= $group['active'] ? 'Disable' : 'Enable' ?>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -606,6 +711,25 @@ $page_title = "Manage Support Groups | CaminhoIT";
 </div>
 <?php endforeach; ?>
 
+<!-- Confirmation Modal for Toggle -->
+<div class="modal fade" id="confirmToggleModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Action</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a href="#" id="confirmToggleLink" class="btn btn-primary">Confirm</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 // Add some interactive feedback
 document.querySelectorAll('.group-card').forEach(card => {
@@ -625,6 +749,25 @@ document.querySelectorAll('.modal').forEach(modal => {
         if (firstInput) {
             firstInput.focus();
         }
+    });
+});
+
+// Handle toggle group confirmation
+document.querySelectorAll('.toggle-group-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const groupId = this.getAttribute('data-group-id');
+        const groupName = this.getAttribute('data-group-name');
+        const action = this.getAttribute('data-action');
+        const showInactive = this.getAttribute('data-show-inactive');
+        
+        const message = `Are you sure you want to ${action} the group "${groupName}"?`;
+        document.getElementById('confirmMessage').textContent = message;
+        
+        const url = `?toggle=${groupId}${showInactive === '1' ? '&show_inactive=1' : ''}`;
+        document.getElementById('confirmToggleLink').setAttribute('href', url);
+        
+        const modal = new bootstrap.Modal(document.getElementById('confirmToggleModal'));
+        modal.show();
     });
 });
 </script>

@@ -1149,6 +1149,15 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header-v2-auth.php';
             color: #cbd5e1 !important;
         }
 
+        :root.dark .currency-section {
+            background: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .currency-section h6 {
+            color: #f1f5f9 !important;
+        }
+
         /* Fix unreadable text in dark mode */
         :root.dark .text-dark {
             color: #e2e8f0 !important;

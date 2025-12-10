@@ -184,6 +184,7 @@ $bundles = $stmt->fetchAll();
 
 $page_title = "Create Order | CaminhoIT";
 include $_SERVER['DOCUMENT_ROOT'] . '/includes/header-v2-auth.php';
+?>
 
 <!-- Hero Section -->
 <header class="hero">

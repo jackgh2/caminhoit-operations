@@ -64,7 +64,7 @@ return [
 // Homepage Sustainability additions
 'hero_heading' => 'Empowering Your Business Through Smart, Sustainable IT & Web Solutions',
 'hero_subheading' => 'Drive innovation, efficiency, and sustainability with CaminhoIT’s intelligent IT and ESG-aware solutions.',
-'sustainability_intelligence_title' => 'Sustainability Intelligence',
+'sustainability_intelligence_title' => 'ESG 2030 & Sustainability',
 'sustainability_intelligence' => 'Empower your organisation to meet UK & EU 2030 climate goals through Verdaic — CaminhoIT’s in-house ESG and carbon-aware technology platform.',
 'learn_more' => 'Learn More',
 

@@ -917,7 +917,7 @@ $page_title = "Dashboard | CaminhoIT";
                         Place Order
                     </a>
                 <?php endif; ?>
-                <a href="/members/view-invoices.php" class="btn c-btn-ghost">
+                <a href="/members/view-invoice.php" class="btn c-btn-ghost">
                     <i class="bi bi-receipt me-1"></i>
                     View Invoices
                 </a>
@@ -978,7 +978,7 @@ $page_title = "Dashboard | CaminhoIT";
         <section class="dashboard-overlap-section">
             <div class="container">
                 <div class="customer-stats fade-in">
-                    <a href="/members/view-invoices.php" class="dashboard-stat-box">
+                    <a href="/members/view-invoice.php" class="dashboard-stat-box">
                         <div class="stat-icon text-warning">💰</div>
                         <div class="stat-number warning"><?= number_format($dashboard_data['invoices']['outstanding']); ?></div>
                         <div class="stat-label">Outstanding Invoices</div>
