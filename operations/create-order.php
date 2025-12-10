@@ -469,6 +469,112 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header-v2-auth.php';
             color: #d1d5db;
             margin: 0 0.5rem;
         }
+
+        /* Dark Mode Styles */
+        :root.dark body {
+            background-color: #0f172a !important;
+            color: #e2e8f0 !important;
+        }
+
+        :root.dark .page-header,
+        :root.dark .form-card,
+        :root.dark .order-item,
+        :root.dark .order-summary,
+        :root.dark .product-card {
+            background: #1e293b !important;
+            color: #e2e8f0 !important;
+            border-color: #334155 !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        :root.dark .order-items {
+            background: #0f172a !important;
+        }
+
+        :root.dark .currency-info {
+            background: rgba(59, 130, 246, 0.1) !important;
+            border-color: #3b82f6 !important;
+            color: #e2e8f0 !important;
+        }
+
+        :root.dark .vat-info {
+            background: rgba(16, 185, 129, 0.1) !important;
+            border-color: #10b981 !important;
+            color: #e2e8f0 !important;
+        }
+
+        :root.dark .vat-info.disabled {
+            background: #334155 !important;
+            border-color: #475569 !important;
+            color: #94a3b8 !important;
+        }
+
+        :root.dark .workflow-indicator {
+            background: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .form-control,
+        :root.dark .form-select {
+            background: #334155 !important;
+            color: #e2e8f0 !important;
+            border-color: #475569 !important;
+        }
+
+        :root.dark .form-control:focus,
+        :root.dark .form-select:focus {
+            background: #334155 !important;
+            color: #e2e8f0 !important;
+            border-color: var(--primary-color) !important;
+        }
+
+        :root.dark .product-card:hover {
+            border-color: var(--primary-color) !important;
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.3) !important;
+        }
+
+        :root.dark .product-card.selected {
+            background: rgba(79, 70, 229, 0.1) !important;
+            border-color: var(--primary-color) !important;
+        }
+
+        :root.dark .text-muted {
+            color: #94a3b8 !important;
+        }
+
+        :root.dark h1, :root.dark h2, :root.dark h3, :root.dark h4, :root.dark h5, :root.dark h6 {
+            color: #f1f5f9 !important;
+        }
+
+        :root.dark .alert-danger {
+            background: rgba(239, 68, 68, 0.15) !important;
+            color: #fca5a5 !important;
+        }
+
+        :root.dark .alert-info {
+            background: rgba(6, 182, 212, 0.15) !important;
+            color: #67e8f9 !important;
+        }
+
+        :root.dark .nav-tabs {
+            border-bottom-color: #334155 !important;
+        }
+
+        :root.dark .nav-tabs .nav-link {
+            color: #94a3b8 !important;
+        }
+
+        :root.dark .nav-tabs .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+
+        :root.dark .workflow-steps {
+            color: #94a3b8 !important;
+        }
+
+        :root.dark .workflow-step.active {
+            color: var(--primary-color) !important;
+        }
     </style>
 
 <div class="main-container">

@@ -1099,9 +1099,9 @@ $page_title = $company ? "Product Assignments - " . $company['name'] . " | Camin
                                                     <button class="btn btn-sm btn-outline-warning" onclick="editAssignment(<?= $assignment['id'] ?>, <?= $assignment['assigned_quantity'] ?>, '<?= htmlspecialchars($assignment['notes'] ?? '') ?>', <?= $assignment['subscription_id'] ?>, <?= $subscription['total_quantity'] ?>)">
                                                         <i class="bi bi-pencil"></i>
                                                     </button>
-                                                    <a href="?company_id=<?= $company_id ?>&unassign=<?= $assignment['id'] ?>" 
+                                                    <a href="#" 
                                                        class="btn btn-sm btn-outline-danger"
-                                                       onclick="return confirm('Unassign this product?')">
+                                                       onclick="showUnassignModal(<?= $company_id ?>, <?= $assignment['id'] ?>); return false;">
                                                         <i class="bi bi-person-dash"></i>
                                                     </a>
                                                 </div>
@@ -1217,6 +1217,29 @@ $page_title = $company ? "Product Assignments - " . $company['name'] . " | Camin
     </div>
 </div>
 
+<!-- Unassign Product Confirmation Modal -->
+<div class="modal fade" id="unassignProductModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Unassign Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to unassign this product from this user?</p>
+                <p class="text-muted mb-0">
+                    <i class="bi bi-info-circle me-1"></i>
+                    This action will free up the license for reassignment.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a href="#" id="confirmUnassignLink" class="btn btn-danger">Unassign Product</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 // Store all users and assignments data
 const allUsers = <?= json_encode($company_users) ?>;
@@ -1276,6 +1299,14 @@ function editAssignment(assignmentId, currentQuantity, notes, subscriptionId, to
     document.getElementById('edit_quantity').max = totalLicenses;
     
     const modal = new bootstrap.Modal(document.getElementById('editAssignmentModal'));
+    modal.show();
+}
+
+function showUnassignModal(companyId, assignmentId) {
+    const confirmLink = document.getElementById('confirmUnassignLink');
+    confirmLink.href = `?company_id=${companyId}&unassign=${assignmentId}`;
+    
+    const modal = new bootstrap.Modal(document.getElementById('unassignProductModal'));
     modal.show();
 }
 

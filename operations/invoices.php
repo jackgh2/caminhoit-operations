@@ -1763,6 +1763,55 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header-v2-auth.php';
         :root.dark h6 {
             color: #f1f5f9 !important;
         }
+
+        :root.dark .breadcrumb {
+            background: #1e293b !important;
+            color: #e2e8f0 !important;
+        }
+
+        :root.dark .breadcrumb-item {
+            color: #94a3b8 !important;
+        }
+
+        :root.dark .breadcrumb-item.active {
+            color: #e2e8f0 !important;
+        }
+
+        :root.dark .card-header-enhanced,
+        :root.dark .stat-card {
+            background: #1e293b !important;
+            color: #e2e8f0 !important;
+        }
+
+        :root.dark .card-title-enhanced {
+            color: #f1f5f9 !important;
+        }
+
+        :root.dark .stat-card::before {
+            opacity: 0.1 !important;
+        }
+
+        :root.dark .quick-actions {
+            background: transparent !important;
+        }
+
+        :root.dark .modal-content {
+            background: #1e293b !important;
+            color: #e2e8f0 !important;
+        }
+
+        :root.dark .modal-header,
+        :root.dark .modal-footer {
+            border-color: #334155 !important;
+        }
+
+        :root.dark .modal-title {
+            color: #f1f5f9 !important;
+        }
+
+        :root.dark .btn-close {
+            filter: invert(1);
+        }
     </style>
 
 <?php if ($show_individual_invoice): ?>
