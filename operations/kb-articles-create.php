@@ -233,6 +233,85 @@ $page_title = "Create New Article";
         .api-status.pro {
             color: #28a745;
         }
+
+        /* Dark Mode Styles */
+        :root.dark body {
+            background: #0f172a !important;
+        }
+
+        :root.dark .meta-section {
+            background: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .card {
+            background: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .card-header {
+            background: #1e293b !important;
+            border-bottom-color: #334155 !important;
+            color: #f1f5f9 !important;
+        }
+
+        :root.dark .card-body {
+            background: #1e293b !important;
+            color: #e2e8f0 !important;
+        }
+
+        :root.dark .form-label {
+            color: #cbd5e1 !important;
+        }
+
+        :root.dark .form-control,
+        :root.dark .form-select {
+            background: #0f172a !important;
+            border-color: #334155 !important;
+            color: #e2e8f0 !important;
+        }
+
+        :root.dark .form-control:focus,
+        :root.dark .form-select:focus {
+            background: #1e293b !important;
+            border-color: #8b5cf6 !important;
+            color: #e2e8f0 !important;
+        }
+
+        :root.dark .char-counter {
+            color: #94a3b8 !important;
+        }
+
+        :root.dark .api-status {
+            color: #94a3b8 !important;
+        }
+
+        :root.dark h1,
+        :root.dark h2,
+        :root.dark h3,
+        :root.dark h4,
+        :root.dark h5,
+        :root.dark h6 {
+            color: #f1f5f9 !important;
+        }
+
+        :root.dark .text-muted {
+            color: #94a3b8 !important;
+        }
+
+        :root.dark .form-check-input {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .form-check-input:checked {
+            background-color: #8b5cf6 !important;
+            border-color: #8b5cf6 !important;
+        }
+
+        :root.dark .form-check-label {
+            color: #cbd5e1 !important;
+        }
     </style>
 
     <div class="container-fluid mt-4">
