@@ -935,7 +935,7 @@ $page_title = "Analytics Dashboard | CaminhoIT";
             <div class="icon primary">
                 <i class="bi bi-ticket"></i>
             </div>
-            <div class="value"><?= number_format($ticket_counts['total_tickets']) ?></div>
+            <div class="value"><?= number_format($ticket_counts['total_tickets'] ?? 0) ?></div>
             <div class="label">Total Tickets</div>
         </div>
 
@@ -943,7 +943,7 @@ $page_title = "Analytics Dashboard | CaminhoIT";
             <div class="icon danger">
                 <i class="bi bi-exclamation-circle"></i>
             </div>
-            <div class="value"><?= number_format($ticket_counts['open_tickets']) ?></div>
+            <div class="value"><?= number_format($ticket_counts['open_tickets'] ?? 0) ?></div>
             <div class="label">Open Tickets</div>
         </div>
 
@@ -951,7 +951,7 @@ $page_title = "Analytics Dashboard | CaminhoIT";
             <div class="icon warning">
                 <i class="bi bi-arrow-clockwise"></i>
             </div>
-            <div class="value"><?= number_format($ticket_counts['in_progress_tickets']) ?></div>
+            <div class="value"><?= number_format($ticket_counts['in_progress_tickets'] ?? 0) ?></div>
             <div class="label">In Progress</div>
         </div>
 
@@ -959,7 +959,7 @@ $page_title = "Analytics Dashboard | CaminhoIT";
             <div class="icon success">
                 <i class="bi bi-check-circle"></i>
             </div>
-            <div class="value"><?= number_format($ticket_counts['closed_tickets']) ?></div>
+            <div class="value"><?= number_format($ticket_counts['closed_tickets'] ?? 0) ?></div>
             <div class="label">Closed Tickets</div>
         </div>
 
@@ -1171,10 +1171,10 @@ new Chart(statusCtx, {
         labels: ['Open', 'In Progress', 'Pending', 'Closed'],
         datasets: [{
             data: [
-                <?= $ticket_counts['open_tickets'] ?>,
-                <?= $ticket_counts['in_progress_tickets'] ?>,
-                <?= $ticket_counts['pending_tickets'] ?>,
-                <?= $ticket_counts['closed_tickets'] ?>
+                <?= $ticket_counts['open_tickets'] ?? 0 ?>,
+                <?= $ticket_counts['in_progress_tickets'] ?? 0 ?>,
+                <?= $ticket_counts['pending_tickets'] ?? 0 ?>,
+                <?= $ticket_counts['closed_tickets'] ?? 0 ?>
             ],
             backgroundColor: ['#EF4444', '#F59E0B', '#06B6D4', '#10B981'],
             borderWidth: 0
