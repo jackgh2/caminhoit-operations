@@ -1640,6 +1640,129 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header-v2-auth.php';
             min-height: auto;
             padding-bottom: 2rem;
         }
+
+        /* Dark Mode Styles */
+        :root.dark body {
+            background: #0f172a !important;
+        }
+
+        :root.dark .enhanced-card,
+        :root.dark .card {
+            background: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .card-header {
+            background: #1e293b !important;
+            border-bottom-color: #334155 !important;
+            color: #f1f5f9 !important;
+        }
+
+        :root.dark .card-body {
+            background: #1e293b !important;
+            color: #e2e8f0 !important;
+        }
+
+        :root.dark .stats-card {
+            background: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .stats-value {
+            color: #f1f5f9 !important;
+        }
+
+        :root.dark .stats-label {
+            color: #94a3b8 !important;
+        }
+
+        :root.dark .filters-card {
+            background: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .form-label {
+            color: #cbd5e1 !important;
+        }
+
+        :root.dark .form-control,
+        :root.dark .form-select {
+            background: #0f172a !important;
+            border-color: #334155 !important;
+            color: #e2e8f0 !important;
+        }
+
+        :root.dark .form-control:focus,
+        :root.dark .form-select:focus {
+            background: #1e293b !important;
+            border-color: #8b5cf6 !important;
+            color: #e2e8f0 !important;
+        }
+
+        :root.dark .table {
+            color: #e2e8f0 !important;
+        }
+
+        :root.dark .table thead th {
+            background: #0f172a !important;
+            color: #f1f5f9 !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .table tbody tr {
+            background: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .table tbody tr:hover {
+            background: #0f172a !important;
+        }
+
+        :root.dark .table td {
+            color: #e2e8f0 !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .invoice-number {
+            color: #f1f5f9 !important;
+        }
+
+        :root.dark .invoice-company {
+            color: #94a3b8 !important;
+        }
+
+        :root.dark .timeline-content {
+            background: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        :root.dark .timeline-header h4 {
+            color: #f1f5f9 !important;
+        }
+
+        :root.dark .timeline-details,
+        :root.dark .text-muted {
+            color: #94a3b8 !important;
+        }
+
+        :root.dark .nav-tabs .nav-link {
+            color: #cbd5e1 !important;
+        }
+
+        :root.dark .nav-tabs .nav-link.active {
+            background: #1e293b !important;
+            color: #f1f5f9 !important;
+            border-color: #334155 #334155 #1e293b !important;
+        }
+
+        :root.dark h1,
+        :root.dark h2,
+        :root.dark h3,
+        :root.dark h4,
+        :root.dark h5,
+        :root.dark h6 {
+            color: #f1f5f9 !important;
+        }
     </style>
 
 <?php if ($show_individual_invoice): ?>
