@@ -210,10 +210,30 @@ try {
 
 $page_title = "Operations Dashboard | CaminhoIT";
 ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header-v2-auth.php'; ?>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $page_title ?></title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
 <style>
     :root {
@@ -257,24 +277,59 @@ $page_title = "Operations Dashboard | CaminhoIT";
 
     /* Navbar */
     .navbar {
-        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%) !important;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
-        padding: 12px 0 !important;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        z-index: 1030 !important;
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        padding: 0.75rem 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1030;
     }
 
-    .navbar .navbar-brand,
-    .navbar .nav-link,
-    .navbar .navbar-text {
+    .navbar-brand {
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700;
+        font-size: 1.5rem;
         color: white !important;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .navbar-brand img {
+        height: 35px;
+    }
+
+    .navbar .nav-link {
+        color: white !important;
+        font-weight: 500;
+        transition: all 0.2s;
+        padding: 0.5rem 1rem !important;
     }
 
     .navbar .nav-link:hover {
         color: #e0e7ff !important;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+    }
+
+    .navbar .dropdown-menu {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .dropdown-item {
+        color: var(--text-color);
+    }
+
+    .navbar .dropdown-item:hover {
+        background: var(--light-gray);
+    }
+
+    :root.dark .navbar .dropdown-menu {
+        background: #1e293b;
     }
 
     /* Hero Section */
@@ -608,6 +663,55 @@ $page_title = "Operations Dashboard | CaminhoIT";
         text-decoration: underline;
     }
 </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="/assets/logo.png" alt="CaminhoIT" onerror="this.style.display='none'">
+            <span>CAMINHO<span style="color: #60a5fa;">IT</span></span>
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="/operations/dashboard.php">Dashboard</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="ticketsDropdown" role="button" data-bs-toggle="dropdown">
+                        Tickets
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/operations/staff-tickets.php">All Tickets</a></li>
+                        <li><a class="dropdown-item" href="/operations/staff-analytics.php">Analytics</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="ordersDropdown" role="button" data-bs-toggle="dropdown">
+                        Orders
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/operations/orders.php">All Orders</a></li>
+                        <li><a class="dropdown-item" href="/operations/quotes.php">Quotes</a></li>
+                        <li><a class="dropdown-item" href="/operations/invoices.php">Invoices</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/members/dashboard.php">My Account</a>
+                </li>
+                <li class="nav-item">
+                    <span class="nav-link">👤 <?= htmlspecialchars($user['username']) ?></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 <!-- Hero Section -->
 <div class="hero-section">
@@ -982,4 +1086,8 @@ setInterval(() => {
 }, 300000);
 </script>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer-v2-auth.php'; ?>
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
